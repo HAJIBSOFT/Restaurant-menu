@@ -409,7 +409,7 @@
     <div class="page-overlay" id="page-overlay"></div> 
 
     <nav class="navbar">
-        <a href="#" class="navbar-brand">مطعمنا <i class="fas fa-utensils"></i></a>
+        <a href="#" class="navbar-brand">مطعم فلان الفلاني<i class="fas fa-utensils"></i></a>
         <button class="cart-toggle-button" id="cart-toggle-btn" aria-label="فتح سلة التسوق">
             <i class="fas fa-shopping-basket"></i>
             <span class="cart-count-badge" id="cart-count-badge">0</span>
@@ -450,7 +450,7 @@
                 <span id="cart-subtotal-amount">0</span> ريال
             </div>
             <div class="summary-line vat-line" id="vat-line-details" style="display: none;">
-                <span>منها ضريبة القيمة المضافة (15%):</span>
+                <span>ضريبة القيمة المضافة (15%):</span>
                 <span id="cart-vat-amount">0</span> ريال
             </div>
 
@@ -482,13 +482,13 @@
         <div class="footer-content container">
             <div class="footer-logo-area">
                 <!-- <img src="your-logo.png" alt="شعار المطعم" class="footer-logo-img"> -->
-                <h3 class="footer-restaurant-name">مطعم المذاق الشهي</h3>
+                <h3 class="footer-restaurant-name">مطعم فلان الفلاني</h3>
                 <p class="footer-tagline">نقدم أشهى المأكولات منذ عام 2024!</p>
             </div>
             <div class="footer-contact-info">
                 <h4>تواصل معنا:</h4>
-                <p><i class="fas fa-map-marker-alt"></i> العنوان: 123 شارع الذواقة، حي النكهات، مدينتك</p>
-                <p><i class="fas fa-phone-alt"></i> الهاتف: 012-345-6789</p>
+                <p><i class="fas fa-map-marker-alt"></i> الرياض - البديعة -شارع عائشة </p>
+                <p><i class="fas fa-phone-alt"></i> جوال :0510012621</p>
                 <p><i class="fas fa-envelope"></i> البريد: contact@tastyrestaurant.com</p>
             </div>
             <div class="footer-social-links">
@@ -499,7 +499,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© <span id="current-year"></span> جميع الحقوق محفوظة لمطعم المذاق الشهي.</p>
+            <p>© <span id="current-year"></span> جميع الحقوق محفوظة لحاجب سوفت .</p>
         </div>
     </footer>
     <!-- ===== End Footer Section ===== -->
@@ -511,39 +511,62 @@
 
         const productsData = [
             { 
-                id: 'meal1', name: 'برجر لحم كلاسيك', category: 'ساندويتشات',
+                id: 'meal1', name: 'برجر لحم', category: 'ساندويتشات',
                 description: 'قطعة لحم بقري طازجة مشوية، خس، طماطم، بصل، صوص خاص في خبز البرجر.',
-                basePrice: 25, image: 'https://via.placeholder.com/300x200/e67e22/ffffff?text=برجر+لحم',
+                basePrice: 12, image: 'https://images.deliveryhero.io/image/hungerstation/menuitem/image/1cd52e657a498d7cce1c77558a651b69?width=256&quality=75',
                 customizations: [
                     { groupName: 'الحجم', type: 'radio', name: 'size', required: true,
-                      options: [{ text: 'عادي', value: 'regular', price: 0 }, { text: 'كبير (دبل)', value: 'large', price: 10 }] },
+                      options: [{ text: 'عادي', value: 'regular', price: 0 }, { text: 'كبير (دبل)', value: 'large', price: 6 }] },
                     { groupName: 'الإضافات', type: 'checkbox', name: 'extras',
-                      options: [{ text: 'جبنة إضافية', value: 'extra_cheese', price: 3 }, { text: 'مخلل', value: 'pickles', price: 1 }] }
+                      options: [{ text: 'جبنة إضافية', value: 'extra_cheese', price: 2 }, { text: 'مخلل', value: 'pickles', price: 1 }] }
                 ]
             },
             { 
                 id: 'meal2', name: 'بيتزا مارغريتا', category: 'بيتزا',
                 description: 'عجينة بيتزا تقليدية مغطاة بصلصة طماطم، جبنة موزاريلا طازجة، وريحان.',
-                basePrice: 30, image: 'https://via.placeholder.com/300x200/c0392b/ffffff?text=بيتزا',
+                basePrice: 12, image: 'https://cdn.salla.sa/lwlEj/lr8AMrrwRY7pr9RdcofJOMdWkYT9jny040gM1EGH.jpg',
                 customizations: [
                     { groupName: 'الحجم', type: 'radio', name: 'pizza_size', required: true,
-                      options: [{ text: 'صغير', value: 'small', price: 0 }, { text: 'وسط', value: 'medium', price: 8 }, { text: 'كبير', value: 'large', price: 15 }] }
+                      options: [{ text: 'صغير', value: 'small', price: 0 }, { text: 'وسط', value: 'medium', price: 3 }, { text: 'كبير', value: 'large', price: 6 }] }
+                ]
+            },
+			       { 
+                id: 'meal3', name: 'بيتزا ببروني', category: 'بيتزا',
+                description: 'بيتزا – صلصة – جبن مبشورة – شرائح ببروني',
+                basePrice: 12, image: 'https://shata-limon.com/wp-content/uploads/2024/11/%D8%A8%D9%8A%D8%AA%D8%B2%D8%A7-%D8%A8%D8%A8%D8%B1%D9%88%D9%86%D9%8A.png',
+                customizations: [
+                    { groupName: 'الحجم', type: 'radio', name: 'pizza_size', required: true,
+                      options: [{ text: 'صغير', value: 'small', price: 0 }, { text: 'وسط', value: 'medium', price: 3 }, { text: 'كبير', value: 'large', price: 6 }] }
                 ]
             },
             { 
                 id: 'drink1', name: 'مشروب غازي', category: 'مشروبات',
                 description: 'اختر مشروبك الغازي المفضل.',
-                basePrice: 5, image: 'https://via.placeholder.com/300x200/3498db/ffffff?text=مشروب',
+                basePrice: 3, image: 'https://mahkoortea.com/wp-content/uploads/2024/10/s850854577414200103_p46_i4_w500.webp',
+				  customizations: [
+                    { groupName: 'المشروب', type: 'radio', name: 'pizza_size', required: true,
+                      options: [{ text: 'ببسي', value: 'small', price: 0 }, { text: 'ديو', value: 'medium', price: 0 },{ text: 'سفن اب', value: 'medium', price: 0 }, { text: 'حمضيات', value: 'large', price: 0 }] }
+                ]
+            },
+			{ 
+                id: 'drink2', name: 'موية', category: 'مشروبات',
+                description: 'مياة 330مل',
+                basePrice: 1, image: 'https://images.deliveryhero.io/image/hungerstation/menuitem/image_url_ref/e0016190b9a8488decf2d8ad4f49d1a0.jpg?width=256&quality=75',
+				
             },
             { 
                 id: 'side1', name: 'بطاطس مقلية', category: 'أطباق جانبية',
                 description: 'بطاطس مقلية مقرمشة ومتبلة.',
-                basePrice: 10, image: 'https://via.placeholder.com/300x200/f1c40f/000000?text=بطاطس',
+                basePrice: 5, image: 'https://shata-limon.com/wp-content/uploads/2024/11/%D8%B5%D8%AD%D9%86-%D8%A8%D8%B7%D8%A7%D8%B7%D8%B3.png',
+			  customizations: [
+                    { groupName: 'الاضافات', type: 'radio', name: 'pizza_size',
+                      options: [{ text: 'بدون كاتشب', value: 'small', price: 0 }, { text: 'بدون شطة', value: 'medium', price: 0 }, { text: 'بدون مايونيز', value: 'large', price: 0 }] }
+                ]
             },
              { 
                 id: 'dessert1', name: 'كيكة شوكولاتة', category: 'حلويات',
                 description: 'قطعة غنية من كيكة الشوكولاتة مع صوص الشوكولاتة.',
-                basePrice: 18, image: 'https://via.placeholder.com/300x200/795548/ffffff?text=كيك',
+                basePrice: 18, image: 'https://cdn1-m.zahratalkhaleej.ae/store/archive/image/2023/2/7/51e14985-ec85-40b4-9079-64927ae9514f.jpg',
             }
         ];
 
@@ -585,7 +608,7 @@
         let currentProductIdInModal = null;
         let currentProductInModalObject = null;
         let notificationTimeout;
-        const whatsappNumber = "966XXXXXXXXX"; // !!! استبدل هذا برقمك الصحيح !!!
+        const whatsappNumber = "966510012621"; // !!! استبدل هذا برقمك الصحيح !!!
         let currentActiveFilter = 'all';
 
 
@@ -647,7 +670,7 @@
                     let priceDisplayHTML = `<p class="price">السعر: ${product.basePrice} ريال</p>`;
                     if (product.customizations && product.customizations.length > 0) {
                         priceDisplayHTML = `<p class="price">يبدأ من: ${product.basePrice} ريال</p>`;
-                        actionButtonHTML = `<button class="customize-btn" onclick="openCustomizationModal('${product.id}')">تخصيص وإضافة <i class="fas fa-cog"></i></button>`;
+                        actionButtonHTML = `<button class="customize-btn" onclick="openCustomizationModal('${product.id}')">حدد الخيارات <i class="fas fa-cog"></i></button>`;
                     } else {
                         actionButtonHTML = `<button class="direct-add-btn" onclick="addDirectToCart('${product.id}')">أضف للسلة <i class="fas fa-cart-plus"></i></button>`;
                     }
@@ -699,7 +722,7 @@
                     checkedBoxes.forEach(cb => currentPrice += parseFloat(cb.dataset.price));
                 }
             });
-            modalCurrentItemPrice.textContent = `السعر الحالي للقطعة: ${currentPrice.toFixed(2)} ريال`;
+            modalCurrentItemPrice.textContent = `السعر مع الاضافات: ${currentPrice.toFixed(2)} ريال`;
         }
 
         window.openCustomizationModal = function(productId) {
@@ -708,7 +731,7 @@
             if (!currentProductInModalObject) return;
             modalProductImage.src = currentProductInModalObject.image;
             modalProductTitle.textContent = currentProductInModalObject.name;
-            modalProductBasePrice.textContent = `السعر الأساسي: ${currentProductInModalObject.basePrice} ريال`;
+            modalProductBasePrice.textContent = `السعر : ${currentProductInModalObject.basePrice} ريال`;
             modalQuantityInput.value = 1;
             modalCustomizationsContainer.innerHTML = ''; 
             if (currentProductInModalObject.customizations) {
@@ -924,7 +947,7 @@
             if (cart.length === 0) {
                 alert("سلة الطلبات فارغة. الرجاء إضافة وجبات أولاً."); return;
             }
-            let message = "طلب جديد من المطعم:\n";
+            let message = "طلب جديد :\n";
             message += "--------------------\n";
             let calculatedSubtotal = 0; 
             cart.forEach((item, index) => {
@@ -945,7 +968,7 @@
             message += `المجموع الفرعي (شامل الضريبة): ${calculatedSubtotal.toFixed(2)} ريال\n`;
             
             const calculatedVatAmount = (calculatedSubtotal * VAT_RATE) / (1 + VAT_RATE);
-            message += `منها ضريبة القيمة المضافة (15%): ${calculatedVatAmount.toFixed(2)} ريال\n`;
+            message += `ضريبة القيمة المضافة (15%): ${calculatedVatAmount.toFixed(2)} ريال\n`;
 
             let finalTotalForMessage = calculatedSubtotal; 
 
@@ -962,7 +985,7 @@
             }
             message += `\n--------------------\n`;
             message += `الإجمالي الكلي للطلب: ${finalTotalForMessage.toFixed(2)} ريال\n\n`;
-            message += "يرجى تأكيد الطلب.\n";
+            message += "شكراُ لطلبكم .\n";
             
             message += "\n--------------------\n";
             message += "بيانات المطعم:\n";
