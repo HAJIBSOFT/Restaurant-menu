@@ -1,86 +1,93 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>مطعمنا الفاخر - قائمة شاملة</title>
+    <title>مطعم فلان الفلاني - قائمة رسمية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- الربط بملف CSS الخارجي -->
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="modal-overlay" id="customization-modal-overlay">
-        <div class="modal-content" id="customization-modal-content">
-            <button class="modal-close-btn" id="modal-close-btn">×</button>
-            <img src="" alt="Product Image" class="modal-product-image" id="modal-product-image">
-            <h2 class="modal-product-title" id="modal-product-title"></h2>
-            <p class="modal-product-base-price" id="modal-product-base-price"></p>
-            <p class="modal-current-item-price" id="modal-current-item-price"></p>
-            <div class="modal-customizations" id="modal-customizations-container"></div>
-            <div class="modal-quantity-controls">
-                <button type="button" class="quantity-btn" id="decrease-quantity" aria-label="إنقاص الكمية">-</button>
-                <input type="number" id="modal-quantity" value="1" min="1" aria-label="الكمية" readonly>
-                <button type="button" class="quantity-btn" id="increase-quantity" aria-label="زيادة الكمية">+</button>
-            </div>
-            <button class="modal-add-to-cart-btn" id="modal-add-to-cart-btn">
-                أضف للطلبات <i class="fas fa-cart-plus"></i>
-            </button>
-        </div>
-    </div>
 
-    <div class="page-overlay" id="page-overlay"></div>
+<body>
+    <div id="preloader"><div class="spinner"></div></div>
 
     <nav class="navbar">
-        <a href="#" class="navbar-brand">مطعم فلان الفلاني<i class="fas fa-utensils"></i></a>
+        <a href="#" class="navbar-brand">منيو للمعاينة</a>
         <button class="cart-toggle-button" id="cart-toggle-btn" aria-label="فتح سلة التسوق">
             <i class="fas fa-shopping-basket"></i>
             <span class="cart-count-badge" id="cart-count-badge">0</span>
         </button>
     </nav>
 
-    <div class="container">
-        <h1 class="page-title">قائمة الطعام <i class="fas fa-concierge-bell"></i></h1>
+    <header class="hero-section">
+        <img src="https://png.pngtree.com/png-clipart/20220604/original/pngtree-restaurant-logo-png-image_7932128.png" alt="شعار مطعم فلان الفلاني" class="hero-logo">
+        <h1>يهلا والله ومسهلا</h1>
+        <p class="hero-subtitle">صدقني بنخليك تذوق اليوم اكل بعمرك ماذقته</p>
+        <a href="#menu-container-start" class="hero-cta-button">شيك ع المنيو <i class="fas fa-chevron-down"></i></a>
+    </header>
 
-        <div class="search-and-view-controls">
+    <div class="modal-overlay" id="customization-modal-overlay">
+        <div class="modal-content" id="customization-modal-content">
+            <button class="modal-close-btn" id="modal-close-btn" aria-label="إغلاق">×</button>
+            <img src="" alt="Product Image" class="modal-product-image" id="modal-product-image">
+            <h2 class="modal-product-title" id="modal-product-title"></h2>
+            <p class="modal-product-base-price" id="modal-product-base-price"></p>
+            <p class="modal-current-item-price" id="modal-current-item-price"></p>
+            <div class="modal-customizations" id="modal-customizations-container"></div>
+            <div class="modal-quantity-controls">
+                <input type="number" id="modal-quantity" value="1" min="1" aria-label="الكمية">
+            </div>
+            <button class="modal-add-to-cart-btn" id="modal-add-to-cart-btn">
+                أضف للطلبات <i class="fas fa-plus-circle"></i>
+            </button>
+        </div>
+    </div>
+    <div class="page-overlay" id="page-overlay"></div>
+
+    <main class="container" id="menu-container-start">
+        <div class="controls-bar animate-on-scroll">
             <div class="search-container">
-                <input type="text" id="search-input" placeholder="ابحث عن وجبتك المفضلة...">
+                <input type="text" id="search-input" placeholder="ابحث عن طبقك المفضل هنا...">
                 <i class="fas fa-search search-icon"></i>
             </div>
             <button id="toggle-view-btn" class="view-toggle-btn" title="تغيير طريقة العرض">
                 <i class="fas fa-th-large"></i>
             </button>
         </div>
-        
 
-        <div class="filters-container-wrapper">
-            <div class="filters-container" id="filters-container">
-               
-            </div>
+        <div class="filters-container-wrapper animate-on-scroll">
+            <div class="filters-container" id="filters-container"></div>
         </div>
 
-        <div id="menu-sections">
-           
-        </div>
-    </div>
+        <div id="menu-sections"></div>
+    </main>
 
     <aside class="cart-sidebar" id="cart-sidebar">
         <div class="cart-sidebar-header">
-            <h2>طلباتك</h2>
+            <h2>سلة طلباتك</h2>
             <button class="close-cart-btn-sidebar" id="close-cart-btn-sidebar" aria-label="إغلاق السلة">×</button>
         </div>
         <div class="cart-items-list-container">
             <ul id="cart-items-list" class="cart-items-list">
-                <li id="empty-cart-message">سلة الطلبات فارغة.</li>
+                <li id="empty-cart-message" style="display: list-item;">سلتك فارغة حالياً. ابدأ بإضافة أطباقك المفضلة!</li>
             </ul>
         </div>
         <div class="cart-sidebar-footer">
             <div class="delivery-options">
                 <label><input type="radio" name="deliveryType" value="pickup" checked> استلام من المطعم</label>
-                <label><input type="radio" name="deliveryType" value="delivery"> توصيل للمنزل</label>
+                <label><input type="radio" name="deliveryType" value="delivery"> توصيل (داخل الحي)</label>
             </div>
-            <textarea id="general-order-notes" placeholder="ملاحظات إضافية على الطلب"></textarea>
+            <textarea id="general-order-notes" placeholder="ملاحظات إضافية على الطلب (اختياري)"></textarea>
+            
+            <div class="summary-line" id="table-number-line" style="display: none; color: var(--secondary-accent); font-weight: bold;">
+                <span>رقم الطاولة:</span>
+                <span id="table-number-display"></span>
+            </div>
 
             <div class="summary-line">
                 <span>المجموع الفرعي (شامل الضريبة):</span>
@@ -90,21 +97,20 @@
                 <span>ضريبة القيمة المضافة (15%):</span>
                 <span id="cart-vat-amount">0</span> ريال
             </div>
-
             <div class="summary-line" id="delivery-fee-line" style="display: none;">
                 <span>رسوم التوصيل:</span>
                 <span id="delivery-fee-amount">0</span> ريال
             </div>
             <div class="summary-line total">
-                <span>الإجمالي الكلي:</span>
+                <span>الإجمالي النهائي:</span>
                 <span id="cart-grand-total-amount">0</span> ريال
             </div>
             <div class="cart-actions">
                 <button class="checkout-btn-whatsapp" id="checkout-btn">
-                    إرسال الطلب عبر واتساب
+                    إرسال الطلب عبر واتساب <i class="fab fa-whatsapp"></i>
                 </button>
                 <button class="clear-cart-btn" id="clear-cart-btn">
-                    إفراغ السلة <i class="fas fa-times-circle"></i>
+                    إفراغ السلة <i class="fas fa-times"></i>
                 </button>
             </div>
         </div>
@@ -114,33 +120,34 @@
         <i class="fas fa-bell"></i> <span id="notification-message"></span>
     </div>
 
-    <!-- ===== Footer Section ===== -->
     <footer class="site-footer">
         <div class="footer-content container">
-            <div class="footer-logo-area">
-                <h3 class="footer-restaurant-name">مطعم فلان الفلاني</h3>
-                <p class="footer-tagline">نقدم أشهى المأكولات منذ عام 2024!</p>
+            <div class="footer-logo-area animate-on-scroll">
+               <img src="https://cdn.salla.sa/8VG3LrofZwOICRflslgrU6Nmrf6kIIjWV19JzS4h.png" alt="شعار مطعم فلان الفلاني" class="footer-logo-img">
+               <p class="footer-tagline">مطعم فلان الفلاني: حيث تلتقي النكهات الأصيلة بالإبداع العصري. تجربة طعام لا تُنسى تنتظرك.</p>
             </div>
-            <div class="footer-contact-info">
-                <h4>تواصل معنا:</h4>
-                <p><i class="fas fa-map-marker-alt"></i> الرياض - البديعة -شارع عائشة </p>
-                <p><i class="fas fa-phone-alt"></i> جوال :0510012621</p>
-                <p><i class="fas fa-envelope"></i> البريد: contact@tastyrestaurant.com</p>
+            <div class="footer-social-links animate-on-scroll">
+                <h3 class="footer-section-title">تابعنا وتواصل</h3>
+                <a href="https://www.tiktok.com/" target="_blank" aria-label="تيك توك"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://www.instagram.com/" target="_blank" aria-label="إنستغرام"><i class="fab fa-instagram"></i></a>
+                <a href="https://x.com/" target="_blank" aria-label="تويتر"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://api.whatsapp.com/send/?phone=966510012621" target="_blank" aria-label="واتساب"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
-            <div class="footer-social-links">
-                <h4>تابعنا على:</h4>
-                <a href="#" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" aria-label="إنستغرام"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="تويتر"><i class="fab fa-twitter"></i></a>
+           <div class="footer-contact-info animate-on-scroll">
+                  <h3 class="footer-section-title">اطلب عبر التطبيقات</h3>
+                  <p class="footer-tagline" style="color: var(--text-light);">متواجدون على: هنقرستيشن، جاهز، مرسول، كيتا، تويو، نون فود.</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© <span id="current-year"></span> جميع الحقوق محفوظة لحاجب سوفت .</p>
+            <p>© <span id="current-year"></span> جميع الحقوق محفوظة لـ <a href="https://hajibsoft.github.io/QR-menu/" target="_blank">حاجب سوفت</a>.</p>
         </div>
     </footer>
-    <!-- ===== End Footer Section ===== -->
 
-    <!-- ربط ملف JavaScript الخارجي (عادةً يكون قبل إغلاق وسم body) -->
+    <button id="scroll-to-top-btn" aria-label="العودة للأعلى">
+        <i class="fas fa-angle-up"></i>
+    </button>
+
+    <!-- الربط بملف JavaScript الخارجي -->
     <script src="script.js"></script>
 </body>
 </html>
